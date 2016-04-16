@@ -2,7 +2,7 @@ package com.rose.ceshi;
 
 public class Rose {
 	public static void main(String[] args) {
-		System.out.println("ÏµÍ³²âÊÔ");
+		System.out.println("ç³»ç»Ÿæµ‹è¯•");
 		
 	}
 }

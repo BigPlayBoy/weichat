@@ -1,7 +1,7 @@
 package com.rose.menu;
 
 public class ClickButton extends Button{
-	//ClickÀàĞÍ²Ëµ¥key
+	//Clickç±»å‹èœå•key
 	private String key;
 
 	public String getKey() {

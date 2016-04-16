@@ -1,7 +1,7 @@
 package com.rose.menu;
 
 public class Menu {
-	//Ò»¼¶²Ëµ¥
+	//ä¸€çº§èœå•
 	private Button[] button;
 
 	public Button[] getButton() {

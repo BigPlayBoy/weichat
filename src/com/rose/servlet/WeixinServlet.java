@@ -26,12 +26,12 @@ public class WeixinServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// super.doGet(req, resp);
-		// »ñÈ¡²ÎÊı
+		// è·å–å‚æ•°
 		String signature = req.getParameter("signature");
 		String timestamp = req.getParameter("timestamp");
 		String nonce = req.getParameter("nonce");
 		String echostr = req.getParameter("echostr");
-		System.out.println("´¦ÀíÇëÇó");
+		System.out.println("å¤„ç†è¯·æ±‚");
 		PrintWriter out = resp.getWriter();
 		if (CheckUtil.checkSignature(signature, timestamp, nonce)) {
 			out.print(echostr);
@@ -47,7 +47,7 @@ public class WeixinServlet extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
 		try {
-			// »ñÈ¡ÊôĞÔ
+			// è·å–å±æ€§
 			Map<String, String> map = MessageUtil.xmlToMap(req);
 			String fromUserName = map.get("FromUserName");
 			String toUserName = map.get("ToUserName");
@@ -57,20 +57,20 @@ public class WeixinServlet extends HttpServlet {
 			String message = null;
 			if (MessageUtil.MESSAGE_TEXT.equals(msgType)) {
 				if ("1".equals(content)) {
-					// ×Ô¶¯»Ø¸´
+					// è‡ªåŠ¨å›å¤
 					message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.auto1());
 				} else if ("2".equals(content)) {
-					// ×Ô¶¯»Ø¸´
+					// è‡ªåŠ¨å›å¤
 					message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.auto2());
 				} else if ("3".equals(content)) {
 					message = MessageUtil.initNewsMessage(toUserName, fromUserName);
-					System.out.println("ÊäÈëµÄÊÇ3");
+					System.out.println("è¾“å…¥çš„æ˜¯3");
 				} else if ("4".equals(content)) {
 					message = MessageUtil.initImageMessage(toUserName, fromUserName);
-					System.out.println("ÊäÈëµÄÊÇ4");
+					System.out.println("è¾“å…¥çš„æ˜¯4");
 				} else if ("5".equals(content)) {
 					message = MessageUtil.initMusicMessage(toUserName, fromUserName);
-					System.out.println("ÊäÈëµÄÊÇ4");
+					System.out.println("è¾“å…¥çš„æ˜¯4");
 				}
 
 			} else if (MessageUtil.MESSAGE_EVENT.equals(msgType)) {
@@ -94,7 +94,7 @@ public class WeixinServlet extends HttpServlet {
 				String Label=map.get("Label");
 				message = MessageUtil.initText(toUserName, fromUserName, Label);
 			}
-System.out.println("ÊÕµ½µÄĞÅÏ¢Îª"+map);
+System.out.println("æ”¶åˆ°çš„ä¿¡æ¯ä¸º"+map);
 			//System.out.println(message);
 			out.print(message);
 

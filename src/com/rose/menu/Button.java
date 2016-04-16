@@ -1,11 +1,11 @@
 package com.rose.menu;
 
 public class Button {
-	//菜单类型
+	//鑿滃崟绫诲瀷
 	private String type;
-	//菜单名称
+	//鑿滃崟鍚嶇О
 	private String name;
-	//二级菜单
+	//浜岀骇鑿滃崟
 	private Button[] sub_button;
 	public String getType() {
 		return type;

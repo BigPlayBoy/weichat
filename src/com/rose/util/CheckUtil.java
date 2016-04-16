@@ -10,17 +10,17 @@ public class CheckUtil {
 
 	public static boolean checkSignature(String signature, String timestamp, String nonce) {
 		String[] arr = new String[] { token, timestamp, nonce };
-		// ÅÅĞò
+		// æ’åº
 		Arrays.sort(arr);
 
-		// Éú³É×Ö·û´®
+		// ç”Ÿæˆå­—ç¬¦ä¸²
 
 		StringBuffer content = new StringBuffer();
 		for (int i = 0; i < arr.length; i++) {
 			content.append(arr[i]);
 		}
 
-		// sha1¼ÓÃÜ
+		// sha1åŠ å¯†
 		String temp = getSha1(content.toString());
 
 		return temp.equals(signature);

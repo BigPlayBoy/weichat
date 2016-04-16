@@ -38,13 +38,13 @@ import com.rose.po.AccessToken;
 import com.rose.po.UserInfo;
 
 /**
- * Î¢ĞÅ¹¤¾ßÀà
+ * å¾®ä¿¡å·¥å…·ç±»
  * 
  * @author Stephen
  *
  */
 public class WeixinUtil {
-	// Ò»ĞŞ¿Æ¼¼È¨ÏŞ²»¹» ÏÂÃæÊ¹ÓÃ²âÊÔºÅ
+	// ä¸€ä¿®ç§‘æŠ€æƒé™ä¸å¤Ÿ ä¸‹é¢ä½¿ç”¨æµ‹è¯•å·
 
 	// private static final String APPID = "wx3b158b1ac3eebb57";
 	// private static final String APPSECRET =
@@ -61,16 +61,16 @@ public class WeixinUtil {
 
 	private static final String DELETE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN";
 
-	// »ñµÃÓÃ»§ĞÅÏ¢
+	// è·å¾—ç”¨æˆ·ä¿¡æ¯
 	private static final String GET_USERINFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
-	// »ñµÃÁÙÊ±¶şÎ¬ÂëÇëÇó
+	// è·å¾—ä¸´æ—¶äºŒç»´ç è¯·æ±‚
 	private static final String GET_QR_SCENE = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN";
 
-	// »ñµÃÓÀ¾Ã¶şÎ¬Âë
+	// è·å¾—æ°¸ä¹…äºŒç»´ç 
 	private static final String GET_QR_LIMIT_SCENE = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN";
 
 	/**
-	 * getÇëÇó
+	 * getè¯·æ±‚
 	 * 
 	 * @param url
 	 * @return
@@ -91,7 +91,7 @@ public class WeixinUtil {
 	}
 
 	/**
-	 * POSTÇëÇó
+	 * POSTè¯·æ±‚
 	 * 
 	 * @param url
 	 * @param outStr
@@ -115,7 +115,7 @@ public class WeixinUtil {
 	}
 
 	/**
-	 * »ñÈ¡accessToken
+	 * è·å–accessToken
 	 * 
 	 * @return
 	 * @throws ParseException
@@ -133,41 +133,41 @@ public class WeixinUtil {
 	}
 
 	public static QRPost createqrPost() {
-//		System.out.println("Ò»¾ä»°¶¼²»Êä³öÂğ1");
+//		System.out.println("ä¸€å¥è¯éƒ½ä¸è¾“å‡ºå—1");
 		QRPost qrPost=new QRPost();
-//		System.out.println("Ò»¾ä»°¶¼²»Êä³öÂğ2");
+//		System.out.println("ä¸€å¥è¯éƒ½ä¸è¾“å‡ºå—2");
 		qrPost.setExpire_seconds("604800");
 		qrPost.setAction_name("QR_SCENE");
 		Action_Info action_info=new Action_Info();
-//		System.out.println("Ò»¾ä»°¶¼²»Êä³öÂğ3");
+//		System.out.println("ä¸€å¥è¯éƒ½ä¸è¾“å‡ºå—3");
 		//action_info.scene.setScene_id(120);
 		Scene scene=new Scene();
 		scene.setScene_id(120);
 		action_info.setScene(scene);
-//		System.out.println("Õâ¾ä»°¿ÉÒÔÊä³ö");
+//		System.out.println("è¿™å¥è¯å¯ä»¥è¾“å‡º");
 
 		qrPost.setAction_info(action_info);
 		System.out.println("qrPost="+qrPost);
-//		System.out.println("Ò»¾ä»°¶¼²»Êä³öÂğ4");
+//		System.out.println("ä¸€å¥è¯éƒ½ä¸è¾“å‡ºå—4");
 		return qrPost;
 	}
 
 	/**
-	 * »ñÈ¡ticket
+	 * è·å–ticket
 	 */
 	public static QRTicket getTicket(String token,String qrPost) throws ClientProtocolException, IOException {
-		// ´´½¨Ò»¸öpostÊı¾İ
+		// åˆ›å»ºä¸€ä¸ªpostæ•°æ®
 		int result = 0;
 		String url = CREATE_MENU_URL.replace("ACCESS_TOKEN", token);
-		System.out.println("ÏÖÔÚ»¹Ã»ÓĞÖ´ĞĞpost");
+		System.out.println("ç°åœ¨è¿˜æ²¡æœ‰æ‰§è¡Œpost");
 		JSONObject jsonObject = doPostStr(url, qrPost);
-		System.out.println("ÏÖÔÚÖ´ĞĞÍêpost");
-		System.out.println("jsonObjectµÄĞÅÏ¢Îª"+jsonObject);
+		System.out.println("ç°åœ¨æ‰§è¡Œå®Œpost");
+		System.out.println("jsonObjectçš„ä¿¡æ¯ä¸º"+jsonObject);
 		QRTicket qrTicket=new QRTicket();
 		qrTicket.setExpire_seconds(jsonObject.getString("expire_seconds"));
 		qrTicket.setTicket(jsonObject.getString("ticket"));
 		qrTicket.setUrl(jsonObject.getString("url"));
-		System.out.println("»ñÈ¡ÏêÏ¸²ÎÊı");
+		System.out.println("è·å–è¯¦ç»†å‚æ•°");
 		try {
 			if (jsonObject != null) {
 				result = jsonObject.getInt("errcode");
@@ -177,12 +177,12 @@ public class WeixinUtil {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			System.out.println("·µ»ØµÄÊÇÕıÈ·µÄ  ¾Í²»ĞèÒªÊä³öresultÁË");
+			System.out.println("è¿”å›çš„æ˜¯æ­£ç¡®çš„  å°±ä¸éœ€è¦è¾“å‡ºresultäº†");
 		}
 		return qrTicket;
-		// //»ñµÃÁÙÊ±¶şÎ¬ÂëµÄÁ´½Ó
+		// //è·å¾—ä¸´æ—¶äºŒç»´ç çš„é“¾æ¥
 		// String url=GET_QR_SCENE.replace("TOKEN", token);
-		// //»ñµÃÓÀ¾Ã¶şÎ¬ÂëµÄÁ´½Ó
+		// //è·å¾—æ°¸ä¹…äºŒç»´ç çš„é“¾æ¥
 		// //String url=GET_QR_LIMIT_SCENE.replace("TOKEN", token);
 		// JSONObject jsonObject = doPostStr(url, token);
 
@@ -196,34 +196,34 @@ public class WeixinUtil {
 	}
 
 	/**
-	 * ×é×°²Ëµ¥
+	 * ç»„è£…èœå•
 	 * 
 	 * @return
 	 */
 	public static Menu initMenu() {
 		Menu menu = new Menu();
 		ClickButton button11 = new ClickButton();
-		button11.setName("ÎÒÒª¹ºÂò");
+		button11.setName("æˆ‘è¦è´­ä¹°");
 		button11.setType("click");
 		button11.setKey("11");
 
 		ViewButton button21 = new ViewButton();
-		button21.setName("ÎÒÒªÔ¤¶¨");
+		button21.setName("æˆ‘è¦é¢„å®š");
 		button21.setType("view");
 		button21.setUrl("http://form.mikecrm.com/f.php?t=4Ai7v8");
 
 		ClickButton button31 = new ClickButton();
-		button31.setName("É¨ÂëÊÂ¼ş");
+		button31.setName("æ‰«ç äº‹ä»¶");
 		button31.setType("scancode_push");
 		button31.setKey("31");
 
 		ClickButton button32 = new ClickButton();
-		button32.setName("µØÀíÎ»ÖÃ");
+		button32.setName("åœ°ç†ä½ç½®");
 		button32.setType("location_select");
 		button32.setKey("32");
 
 		Button button = new Button();
-		button.setName("¹ØÓÚÎÒÃÇ");
+		button.setName("å…³äºæˆ‘ä»¬");
 		button.setSub_button(new Button[] { button31, button32 });
 
 		menu.setButton(new Button[] { button11, button21, button });
@@ -257,7 +257,7 @@ public class WeixinUtil {
 	}
 
 	/**
-	 * »ñÈ¡ÓÃ»§ĞÅÏ¢
+	 * è·å–ç”¨æˆ·ä¿¡æ¯
 	 * 
 	 * @param token
 	 * @param openid
@@ -269,7 +269,7 @@ public class WeixinUtil {
 		String url = GET_USERINFO_URL.replace("ACCESS_TOKEN", token).replace("OPENID", openid);
 		JSONObject jsonObject = doGetStr(url);
 		UserInfo userInfo = new UserInfo();
-		// »ñÈ¡ÓÃ»§µÄĞÅÏ¢ ¾õµÃÓĞµãÂé·³ ¼òµ¥µÄ²»»á
+		// è·å–ç”¨æˆ·çš„ä¿¡æ¯ è§‰å¾—æœ‰ç‚¹éº»çƒ¦ ç®€å•çš„ä¸ä¼š
 		userInfo.setSubscribe(jsonObject.getInt("subscribe"));
 		userInfo.setCity(jsonObject.getString("city"));
 		userInfo.setOpenid(jsonObject.getString("openid"));
@@ -279,7 +279,7 @@ public class WeixinUtil {
 	}
 
 	/**
-	 * ÎÄ¼şÉÏ´«
+	 * æ–‡ä»¶ä¸Šä¼ 
 	 * 
 	 * @param filePath
 	 * @param accessToken
@@ -294,13 +294,13 @@ public class WeixinUtil {
 			throws IOException, NoSuchAlgorithmException, NoSuchProviderException, KeyManagementException {
 		File file = new File(filePath);
 		if (!file.exists() || !file.isFile()) {
-			throw new IOException("ÎÄ¼ş²»´æÔÚ");
+			throw new IOException("æ–‡ä»¶ä¸å­˜åœ¨");
 		}
 
 		String url = UPLOAD_URL.replace("ACCESS_TOKEN", accessToken).replace("TYPE", type);
 
 		URL urlObj = new URL(url);
-		// Á¬½Ó
+		// è¿æ¥
 		HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
 
 		con.setRequestMethod("POST");
@@ -308,11 +308,11 @@ public class WeixinUtil {
 		con.setDoOutput(true);
 		con.setUseCaches(false);
 
-		// ÉèÖÃÇëÇóÍ·ĞÅÏ¢
+		// è®¾ç½®è¯·æ±‚å¤´ä¿¡æ¯
 		con.setRequestProperty("Connection", "Keep-Alive");
 		con.setRequestProperty("Charset", "UTF-8");
 
-		// ÉèÖÃ±ß½ç
+		// è®¾ç½®è¾¹ç•Œ
 		String BOUNDARY = "----------" + System.currentTimeMillis();
 		con.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + BOUNDARY);
 
@@ -325,13 +325,13 @@ public class WeixinUtil {
 
 		byte[] head = sb.toString().getBytes("utf-8");
 
-		// »ñµÃÊä³öÁ÷
+		// è·å¾—è¾“å‡ºæµ
 		OutputStream out = new DataOutputStream(con.getOutputStream());
-		// Êä³ö±íÍ·
+		// è¾“å‡ºè¡¨å¤´
 		out.write(head);
 
-		// ÎÄ¼şÕıÎÄ²¿·Ö
-		// °ÑÎÄ¼şÒÑÁ÷ÎÄ¼şµÄ·½Ê½ ÍÆÈëµ½urlÖĞ
+		// æ–‡ä»¶æ­£æ–‡éƒ¨åˆ†
+		// æŠŠæ–‡ä»¶å·²æµæ–‡ä»¶çš„æ–¹å¼ æ¨å…¥åˆ°urlä¸­
 		DataInputStream in = new DataInputStream(new FileInputStream(file));
 		int bytes = 0;
 		byte[] bufferOut = new byte[1024];
@@ -340,8 +340,8 @@ public class WeixinUtil {
 		}
 		in.close();
 
-		// ½áÎ²²¿·Ö
-		byte[] foot = ("\r\n--" + BOUNDARY + "--\r\n").getBytes("utf-8");// ¶¨Òå×îºóÊı¾İ·Ö¸ôÏß
+		// ç»“å°¾éƒ¨åˆ†
+		byte[] foot = ("\r\n--" + BOUNDARY + "--\r\n").getBytes("utf-8");// å®šä¹‰æœ€åæ•°æ®åˆ†éš”çº¿
 
 		out.write(foot);
 
@@ -352,7 +352,7 @@ public class WeixinUtil {
 		BufferedReader reader = null;
 		String result = null;
 		try {
-			// ¶¨ÒåBufferedReaderÊäÈëÁ÷À´¶ÁÈ¡URLµÄÏìÓ¦
+			// å®šä¹‰BufferedReaderè¾“å…¥æµæ¥è¯»å–URLçš„å“åº”
 			reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String line = null;
 			while ((line = reader.readLine()) != null) {

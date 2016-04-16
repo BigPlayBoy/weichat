@@ -25,7 +25,7 @@ import com.rose.po.TextMessage;
 import com.thoughtworks.xstream.XStream;
 
 public class MessageUtil {
-	// ÏûÏ¢µÄ¸ñÊ½×ª»»
+	// æ¶ˆæ¯çš„æ ¼å¼è½¬æ¢
 
 	public static final String MESSAGE_TEXT = "text";
 	public static final String MESSAGE_NEWS = "news";
@@ -43,7 +43,7 @@ public class MessageUtil {
 	public static final String MESSAGE_SCANCODE= "scancode_push";
 
 	/**
-	 * xml×ªÎªmap¼¯ºÏ
+	 * xmlè½¬ä¸ºmapé›†åˆ
 	 * 
 	 * @param request
 	 * @return
@@ -72,7 +72,7 @@ public class MessageUtil {
 	}
 
 	/**
-	 * ½«ÎÄ±¾ÏûÏ¢¶ÔÏó×ª»¯Îªxml
+	 * å°†æ–‡æœ¬æ¶ˆæ¯å¯¹è±¡è½¬åŒ–ä¸ºxml
 	 * 
 	 * @param textMessage
 	 * @return
@@ -95,38 +95,38 @@ public class MessageUtil {
 	}
 	
 	/**
-	 * Ö÷²Ëµ¥
+	 * ä¸»èœå•
 	 * @return
 	 */
 	public static String menuText(){
 		StringBuffer sb=new StringBuffer();
-		sb.append("»¶Ó­¹Ø×¢ \n\n");
-		sb.append("ÏÖÔÚ»¹ÔÚ²âÊÔÖĞ\n");
+		sb.append("æ¬¢è¿å…³æ³¨ \n\n");
+		sb.append("ç°åœ¨è¿˜åœ¨æµ‹è¯•ä¸­\n");
 		return sb.toString();
 	}
 	/**
-	 * ×Ô¶¯»Ø¸´1
+	 * è‡ªåŠ¨å›å¤1
 	 * @return
 	 */
 	public static String auto1(){
 		StringBuffer sb=new StringBuffer();
-		sb.append("ÕâÀïÊÇ×Ô¶¯»Ø¸´\n\n");
-		sb.append("ÏÖÔÚ»¹ÔÚ²âÊÔÖĞ\n");
+		sb.append("è¿™é‡Œæ˜¯è‡ªåŠ¨å›å¤\n\n");
+		sb.append("ç°åœ¨è¿˜åœ¨æµ‹è¯•ä¸­\n");
 		return sb.toString();
 	}
 	/**
-	 * ×Ô¶¯»Ø¸´2
+	 * è‡ªåŠ¨å›å¤2
 	 * @return
 	 */
 	public static String auto2(){
 		StringBuffer sb=new StringBuffer();
-		sb.append("ÕâÀïÊÇ×Ô¶¯»Ø¸´\n");
-		sb.append("×Ô¶¯»Ø¸´2\n");
-		sb.append("ÏÖÔÚ»¹ÔÚ²âÊÔÖĞ\n");
+		sb.append("è¿™é‡Œæ˜¯è‡ªåŠ¨å›å¤\n");
+		sb.append("è‡ªåŠ¨å›å¤2\n");
+		sb.append("ç°åœ¨è¿˜åœ¨æµ‹è¯•ä¸­\n");
 		return sb.toString();
 	}
 	/**
-	 * ½«Í¼ÎÄÏûÏ¢¶ÔÏó×ª»¯Îªxml
+	 * å°†å›¾æ–‡æ¶ˆæ¯å¯¹è±¡è½¬åŒ–ä¸ºxml
 	 * 
 	 * @param textMessage
 	 * @return
@@ -138,7 +138,7 @@ public class MessageUtil {
 		return xstream.toXML(newsMessage);
 	}
 	/**
-	 * Éú³ÉÍ¼ÎÄÏûÏ¢
+	 * ç”Ÿæˆå›¾æ–‡æ¶ˆæ¯
 	 * @param toUserName
 	 * @param fromUesrName
 	 * @return
@@ -149,8 +149,8 @@ public class MessageUtil {
 		NewsMessage newsMessage=new NewsMessage(); 
 		
 		News news=new News();
-		news.setTitle("µÚÒ»´Î ºÃ½ôÕÅ");
-		news.setDescription("ÕâÀïÊÇÃèÊöÎÄ±¾°É");
+		news.setTitle("ç¬¬ä¸€æ¬¡ å¥½ç´§å¼ ");
+		news.setDescription("è¿™é‡Œæ˜¯æè¿°æ–‡æœ¬å§");
 		news.setPicUrl("http://huashengke1994.6655.la/weixin/image/imooc.jpg");
 		news.setUrl("www.baidu.com");
 		newsList.add(news);
@@ -168,7 +168,7 @@ public class MessageUtil {
 		
 	}
 	/**
-	 * Í¼Æ¬ÏûÏ¢×ªÎªxml
+	 * å›¾ç‰‡æ¶ˆæ¯è½¬ä¸ºxml
 	 * @param imageMessage
 	 * @return
 	 */
@@ -178,7 +178,7 @@ public class MessageUtil {
 		return xstream.toXML(imageMessage);
 	}
 	/**
-	 * ×é×°Í¼Æ¬ÏûÏ¢
+	 * ç»„è£…å›¾ç‰‡æ¶ˆæ¯
 	 * @param toUserName
 	 * @param fromUserName
 	 * @return
@@ -197,7 +197,7 @@ public class MessageUtil {
 		return message;
 	}
 	/**
-	 * ÒôÀÖÏûÏ¢×ªÎªxml
+	 * éŸ³ä¹æ¶ˆæ¯è½¬ä¸ºxml
 	 * @param musicMessage
 	 * @return
 	 */
@@ -207,7 +207,7 @@ public class MessageUtil {
 		return xstream.toXML(musicMessage);
 	}
 	/**
-	 * ×é×°ÒôÀÖÏûÏ¢
+	 * ç»„è£…éŸ³ä¹æ¶ˆæ¯
 	 * @param toUserName
 	 * @param fromUserName
 	 * @return
@@ -217,7 +217,7 @@ public class MessageUtil {
 		Music music = new Music();
 		music.setThumbMediaId("vJNtTUH_5hbZ0nJsugp1_qtjYrovIVC3WQAvTopFIAXarA4w-tjDkQBUWcD7tqpf");
 		music.setTitle("see you again");
-		music.setDescription("ËÙ7Æ¬Î²Çú");
+		music.setDescription("é€Ÿ7ç‰‡å°¾æ›²");
 		music.setMusicUrl("http://huashengke1994.6655.la/weixin/resource/See You Again.mp3");
 		music.setHQMusicUrl("http://huashengke1994.6655.la/weixin/resource/See You Again.mp3");
 		
