@@ -11,14 +11,12 @@ public class WeixinTest {
 	public static void main(String[] args) {
 		try {
 			AccessToken token = WeixinUtil.getAccessToken();
-			System.out.println("Æ±¾İ£º"+token.getAccessToken());
-			System.out.println("ÓĞĞ§Ê±¼ä£º"+token.getExpiresIn());
+			System.out.println("ç¥¨æ®ï¼š"+token.getAccessToken());
+			System.out.println("æœ‰æ•ˆæ—¶é—´ï¼š"+token.getExpiresIn());
 			//UserInfo userInfo=WeixinUtil.getUserInfo(token.getAccessToken(),"onw-Fv63xbl6nCDAV0XP8baL3aak");
 			//System.out.println(userInfo);
 			
-			
-			
-			//ÎÄ¼şÉÏ´«  ¹ş¹ş Ã»ÓĞÈ¨ÏŞ¡£¡£¡£¡£
+			//æ–‡ä»¶ä¸Šä¼   å“ˆå“ˆ æ²¡æœ‰æƒé™ã€‚ã€‚ã€‚ã€‚
 			//String path = "e:/imooc.jpg"; 
 			//String mediaId=WeixinUtil.upload(path, token.getToken(), "image");
 			//String mediaId = WeixinUtil.upload(path, token.getToken(), "thumb");
@@ -36,9 +34,9 @@ public class WeixinTest {
 //			String menu=JSONObject.fromObject(WeixinUtil.initMenu()).toString();
 //			int result=WeixinUtil.createMenu(token.getAccessToken(), menu);
 //			if(result==0){
-//				System.out.println("´´½¨²Ëµ¥³É¹¦");
+//				System.out.println("åˆ›å»ºèœå•æˆåŠŸ");
 //			}else{
-//				System.out.println("´íÎó"+result);
+//				System.out.println("é”™è¯¯"+result);
 //			}
 			//int result=WeixinUtil.getUserInfo(token.getAccessToken(), path);
 			
